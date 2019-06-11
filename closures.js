@@ -158,10 +158,13 @@ var module = (function() {
   // outside our lexical scope
   return {
     // Code here.
+    publicMethod: function(){
+      return privateMethod();
+    }
   };
 })();
 
-
+module.publicMethod()
 
 ////////// PROBLEM 7 //////////
 
@@ -177,6 +180,12 @@ function secretNumber() {
 
   return {
     // Code here
+    addToSecret: function(newS){
+      return secret += newS
+    },
+    takeAwayFromSecret: function(old){
+      return secret -= old
+    }
   };
 }
 
@@ -202,8 +211,9 @@ function secretNumber() {
 
 function timeOutCounter() {
   for (var i = 0; i <= 5; i++) {
+    let index = i;
     setTimeout(function() {
-      console.log(i);
+      console.log(index);
     }, i * 1000);
   }
 }
